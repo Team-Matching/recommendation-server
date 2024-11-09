@@ -12,6 +12,7 @@ class UserProfile(BaseModel):
 def get_recommendations(user_profile: UserProfile):
     try:
         similarity = recommend(user_profile.user_profile)
+        print(similarity)
         return {"similarity": similarity.tolist()}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
